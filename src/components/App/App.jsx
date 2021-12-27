@@ -19,6 +19,7 @@ import MyLists from '../MyLists/MyLists';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import ListDetails from '../ListDetails/ListDetails';
 
 import './App.css';
 
@@ -66,6 +67,14 @@ function App() {
             path="/mylists"
           >
             <MyLists />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows InfoPage else shows LoginPage
+            exact
+            path="/listdetails"
+          >
+            <ListDetails />
           </ProtectedRoute>
 
           <Route
