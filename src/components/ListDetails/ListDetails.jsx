@@ -27,9 +27,10 @@ function ListDetails(props) {
       <p>{list.id}</p>
       <ul>
         {listDetails.map((place, index) => (
-          <li key={index}>id:{place.id}, {place.name}, {place.comments}<button>More info</button></li>
+          <li key={index}>id: {place.id}, {place.name}, {place.comments}<button>More info</button></li>
         ))}
       </ul>
+      <Link to="/addnewlocation"><button>Add a New Location</button></Link>
     </div>
   );
 }
