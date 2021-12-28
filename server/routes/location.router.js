@@ -36,12 +36,14 @@ router.post('/', (req, res) => {
       // saves location.id to insert into input.location_id
 
       const inputQuery = `
-      INSERT INTO input (user_id, list_id, location_id)
-      VALUES ($1, $2, $3);`;
+      INSERT INTO input (user_id, list_id, location_id, rating, comments)
+      VALUES ($1, $2, $3, $4, $5);`;
       const inputQueryValues = [
         newLocation.userID,
         newLocation.listID,
-        newLocationID
+        newLocationID,
+        newLocation.rating,
+        newLocation.comments
       ];
 
     pool.query(inputQuery, inputQueryValues)
