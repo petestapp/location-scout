@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Form } from 'react';
 
 function AddNewLocation(props) {
   const dispatch = useDispatch();
@@ -15,30 +14,32 @@ function AddNewLocation(props) {
     state: '',
     zip: 0,
     latitude: 0,
-    longitude: 0
+    longitude: 0,
+    userID: user.id,
+    listID: list.id
   })
 
-  const getName = (action) => {
+  const getName = () => {
     setNewLocation({...newLocation, name: event.target.value});
   }
 
-  const getCity = (action) => {
+  const getCity = () => {
     setNewLocation({...newLocation, city: event.target.value});
   }
 
-  const getState = (action) => {
+  const getState = () => {
     setNewLocation({...newLocation, state: event.target.value});
   }
 
-  const getZip = (action) => {
+  const getZip = () => {
     setNewLocation({...newLocation, zip: event.target.value});
   }
 
-  const getLatitude = (action) => {
+  const getLatitude = () => {
     setNewLocation({...newLocation, latitude: event.target.value});
   }
 
-  const getLongitude = (action) => {
+  const getLongitude = () => {
     setNewLocation({...newLocation, longitude: event.target.value});
   }
 
@@ -50,11 +51,16 @@ function AddNewLocation(props) {
     })
   }
 
+  const consoleLogNewLocation = () => {
+    console.log('newLocation:', newLocation);
+  }
+
   return (
     <div>
       <h2>{heading}</h2>
       <h3>User ID: {user.id}</h3>
       <h4>{list.name}</h4>
+      <button onClick={consoleLogNewLocation}>console.log newLocation</button>
       <form onSubmit={submitNewLocation}>
         <label>
           New Location:
