@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import useReduxStore from '../../hooks/useReduxStore';
 import { Link } from 'react-router-dom';
@@ -6,6 +6,12 @@ import { Link } from 'react-router-dom';
 function MyLists() {
   const dispatch = useDispatch();
   const store = useReduxStore();
+  const user = store.user;
+  const [showAddNewList, setShowAddNewList] = useState(false);
+  const [newList, setNewList] = useState({
+    name: '',
+    userID: user.id 
+  });
 
   useEffect(() => {
     console.log('in useEffect');
@@ -13,11 +19,23 @@ function MyLists() {
   }, []);
 
   const setSelectedList = (list) => {
-    let selectedListHUH = list;
+    let selectedList = list;
     dispatch({
       type: 'SET_SELECTED_LIST',
-      payload: selectedListHUH
+      payload: selectedList
     });
+  }
+
+  const handleChange = (event) => {
+    setNewList({...newList, name: event.target.value});
+  }
+
+  const submitNewList = () => {
+    event.preventDefault();
+    dispatch({
+      type: 'ADD_NEW_LIST',
+      payload: newList
+    })
   }
 
   return (
@@ -25,9 +43,18 @@ function MyLists() {
       <p>My Lists</p>
       <ul>
         {store.userlist.map((list, index) => (
-          <li key={index}>{list.name} <Link to="/listdetails"><button onClick={() => setSelectedList(list) }>More info</button></Link></li>
+          <li key={list.id}>{list.name} <Link to="/listdetails"><button onClick={() => setSelectedList(list)}>More info</button></Link></li>
         ))}
       </ul>
+      <button onClick={() => setShowAddNewList(!showAddNewList)}>Add New List</button>
+      {
+        showAddNewList?
+        <form onSubmit={submitNewList}>
+          <input type="text" name="name" placeholder="List Name" onChange={(event)=>handleChange(event)}/>
+        <input type="submit"/>
+        </form>:
+        <p>showAddNewList = false</p>
+      }
     </div>
   );
 }

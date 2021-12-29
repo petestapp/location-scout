@@ -8,6 +8,7 @@ function* AddNewLocationSaga() {
 function* AddNewLocation(action) {
     try {
         const response = yield axios.post('/api/location', action.payload);
+        console.log('response.data:', response.data);
         yield put({type: 'SET_LIST', payload: action.payload});
     } catch(error) {
         console.log('NewLocation post failed', error);

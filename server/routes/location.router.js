@@ -27,9 +27,9 @@ router.post('/', (req, res) => {
     newLocation.latitude,
     newLocation.longitude,
   ];
-  
+
   pool.query(locationQuery, locationQueryValues)
-  // end query for location table
+    // end query for location table
     .then(result => {
       const newLocationID = result.rows[0].id;
       console.log('newLocationID:', newLocationID);
@@ -46,16 +46,16 @@ router.post('/', (req, res) => {
         newLocation.comments
       ];
 
-    pool.query(inputQuery, inputQueryValues)
-      .then(result => {
-        res.sendStatus(201);
-      }).catch(err => {
-        console.log(err);
-        res.sendStatus(500);
-      })
+      pool.query(inputQuery, inputQueryValues)
+        .then(result => {
+          res.sendStatus(201);
+        }).catch(err => {
+          console.log(err);
+          res.sendStatus(500);
+        })
       // end router for input table
 
-    // error for location query
+      // error for location query
     }).catch((err) => {
       console.log('error adding location', err);
       res.sendStatus(500);

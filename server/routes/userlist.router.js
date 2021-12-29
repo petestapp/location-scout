@@ -6,7 +6,6 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', rejectUnauthenticated, (req, res) => {
-    console.log('req.user.id:', req.user.id);
     const query = 
     `SELECT list.name, list.id FROM list
     JOIN user_list ON list.id = user_list.list_id

@@ -8,26 +8,50 @@ const {
 router.get('/', (req, res) => {
     let listID = Number(req.query.id);
     console.log('listID:', listID);
-    const query = 
-    `SELECT location.id, location.name, input.comments FROM list
+    const query =
+        `SELECT location.id, location.name, input.comments FROM list
     JOIN input ON list.id = input.list_id
     JOIN location ON input.location_id = location.id
     WHERE list.id = ${listID};`;
     pool.query(query)
-    .then(result => {
-        res.send(result.rows);
-    })
-    .catch(err => {
-        console.log('error getting list', err);
-        res.sendStatus(500);
-    })
+        .then(result => {
+            res.send(result.rows);
+        })
+        .catch(err => {
+            console.log('error getting list', err);
+            res.sendStatus(500);
+        })
 });
 
-/**
- * POST route template
- */
 router.post('/', (req, res) => {
-  // POST route code here
+    const newList = req.body;
+
+    const listQuery = `
+    INSERT INTO list (name)
+    VALUES ($1)
+    RETURNING id;`;
+
+    pool.query(listQuery, [newList.name])
+        // end query for list table
+        .then((result) => {
+            const newListID = result.rows[0].id;
+            console.log('newListID:', result.rows[0].id);
+
+            const userListQuery = `
+            INSERT INTO user_list (user_id, list_id)
+            VALUES ($1, $2);`;
+
+            pool.query(userListQuery, [newList.userID, newListID])
+                .then(result => {
+                    res.sendStatus(201);
+                }).catch(err => {
+                    console.log(err);
+                    res.sendStatus(500);
+                })
+        }).catch((err) => {
+            console.log('error adding list', err);
+            res.sendStatus(500);
+        })
 });
 
 module.exports = router;
