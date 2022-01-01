@@ -8,8 +8,8 @@ const {
 router.get('/', (req, res) => {
     let listID = Number(req.query.id);
     console.log('listID:', listID);
-    const query =
-        `SELECT location.id, location.name, input.comments FROM list
+    const query = `
+    SELECT location.id, location.name, location.city, location.state, input.rating, input.comments FROM list
     JOIN input ON list.id = input.list_id
     JOIN location ON input.location_id = location.id
     WHERE list.id = ${listID};`;

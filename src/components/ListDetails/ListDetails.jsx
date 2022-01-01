@@ -49,17 +49,30 @@ function ListDetails(props) {
   return (
     <div>
       <h2>{list.name}</h2>
-      <p>{list.id}</p>
-      <ul>
-        {listDetails.map((place, index) => (
-          <li key={index}>id: {place.id}, {place.name}, {place.comments} <button>More info</button></li>
-        ))}
-      </ul>
-      {/* <p>
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-          Add New Location
-        </button>
-      </p> */}
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Rating</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {listDetails.map((place, index) => (
+            <tr key={index}>
+              <td>{place.name}</td>
+              <td>{place.city}, {place.state}</td>
+              <td>{place.rating}</td>
+              <td>
+                <button class="btn btn-outline-primary">More Info</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewLocation">
         Add New Location
       </button>
@@ -103,6 +116,39 @@ function ListDetails(props) {
                         <option value="IL">Illinois</option>
                         <option value="IN">Indiana</option>
                         <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Louisiana</option>
+                        <option value="LA">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
                       </select>
                     </div>
                     <div class="col-md-3 mb-3">
@@ -121,7 +167,7 @@ function ListDetails(props) {
                     </div>
                     <div class="col-md-4 mb-3">
                       <label class="form-label">Rating</label>
-                      <input class="form-control" type="text" name="comments" placeholder="rating" onChange={(event) => handleChange(event)} />
+                      <input class="form-control" type="text" name="rating" placeholder="rating" onChange={(event) => handleChange(event)} />
                     </div>
                   </div>
                   <div class="mb-3">
@@ -138,26 +184,6 @@ function ListDetails(props) {
           </div>
         </div>
       </div>
-      {/* <div class="collapse" id="collapseExample">
-        <div class="card card-body">
-          <form onSubmit={submitNewLocation}>
-            <label>
-              New Location:
-              <input type="text" name="name" placeholder="Location Name" onChange={(event) => handleChange(event)} />
-              <input type="text" name="city" placeholder="City" onChange={(event) => handleChange(event)} />
-              <input type="text" name="state" placeholder="State" onChange={(event) => handleChange(event)} />
-              <input type="number" name="zip" placeholder="ZIP Code" onChange={(event) => handleChange(event)} />
-              <input type="number" name="latitude" placeholder="Latitude" onChange={(event) => handleChange(event)} />
-              <input type="number" name="longitude" placeholder="Longitude" onChange={(event) => handleChange(event)} />
-              <br />
-              <input type="text" name="rating" placeholder="rating" onChange={(event) => handleChange(event)} />
-              <input type="text" name="comments" placeholder="comments" onChange={(event) => handleChange(event)} />
-            </label>
-            <input type="submit" />
-          </form>
-        </div>
-      </div> */}
-      {/* <Link to="/addnewlocation"><button>Add a New Location</button></Link> */}
     </div>
   );
 }

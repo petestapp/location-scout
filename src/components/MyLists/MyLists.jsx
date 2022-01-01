@@ -40,12 +40,7 @@ function MyLists() {
 
   return (
     <div className="container">
-      <p class="h1">My Lists</p>
-      <ul>
-        {store.userlist.map((list, index) => (
-          <li key={list.id}>{list.name} <Link to="/listdetails"><button onClick={() => setSelectedList(list)}>More info</button></Link></li>
-        ))}
-      </ul>
+      <h2>My Lists</h2>
 
       <table class="table">
         <thead>
