@@ -7,12 +7,12 @@ function* getListSaga() {
 }
 
 function* getList(action) {
-    console.log(`in getList:`, action.payload);
+    console.log(`in getList: action.payload:`, action.payload);
     try {
-        const response = yield axios.get('/api/list/', {params: {id: action.payload.id}});
+        const response = yield axios.get('/api/list/', { params: { id: action.payload } });
         console.log("response.data", response.data);
-        yield put({type: 'SET_LIST', payload: response.data});
-    } catch(err) {
+        yield put({ type: 'SET_LIST', payload: response.data });
+    } catch (err) {
         console.log('list get request failed', err);
     }
 }
@@ -21,8 +21,8 @@ function* addNewList(action) {
     console.log(`in addList:`, action.payload);
     try {
         const response = yield axios.post('/api/list/', action.payload);
-        yield put({type: 'GET_LIST', payload: action.payload});
-    } catch(err) {
+        yield put({ type: 'GET_LIST', payload: action.payload });
+    } catch (err) {
         console.log('list post request failed', err);
     }
 }

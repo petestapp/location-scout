@@ -6,6 +6,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import 'bootstrap/dist/css/bootstrap.css';
+
 import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
@@ -22,7 +24,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import ListDetails from '../ListDetails/ListDetails';
 import AddNewLocation from '../AddNewLocation/AddNewLocation';
 
-import './App.css';
+// import './App.css';
 
 function App() {
   const dispatch = useDispatch();

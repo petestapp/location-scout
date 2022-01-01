@@ -2,16 +2,10 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
+
 router.get('/', (req, res) => {
-  // GET route code here
 });
 
-/**
- * POST route template
- */
 router.post('/', (req, res) => {
   const newLocation = req.body;
 
@@ -61,5 +55,10 @@ router.post('/', (req, res) => {
       res.sendStatus(500);
     });
 });
+
+router.delete('/:id', (req, res) => {
+  const query = `DELETE FROM location where id=$1;`;
+  console.log('req.params:', req.params);
+})
 
 module.exports = router;

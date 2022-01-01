@@ -10,12 +10,12 @@ function MyLists() {
   const [showAddNewList, setShowAddNewList] = useState(false);
   const [newList, setNewList] = useState({
     name: '',
-    userID: user.id 
+    userID: user.id
   });
 
   useEffect(() => {
     console.log('in useEffect');
-    dispatch({type: 'GET_USER_LIST'});
+    dispatch({ type: 'GET_USER_LIST' });
   }, []);
 
   const setSelectedList = (list) => {
@@ -27,7 +27,7 @@ function MyLists() {
   }
 
   const handleChange = (event) => {
-    setNewList({...newList, name: event.target.value});
+    setNewList({ ...newList, name: event.target.value });
   }
 
   const submitNewList = () => {
@@ -40,21 +40,47 @@ function MyLists() {
 
   return (
     <div className="container">
-      <p>My Lists</p>
+      <p class="h1">My Lists</p>
       <ul>
         {store.userlist.map((list, index) => (
           <li key={list.id}>{list.name} <Link to="/listdetails"><button onClick={() => setSelectedList(list)}>More info</button></Link></li>
         ))}
       </ul>
-      <button onClick={() => setShowAddNewList(!showAddNewList)}>Add New List</button>
-      {
-        showAddNewList?
-        <form onSubmit={submitNewList}>
-          <input type="text" name="name" placeholder="List Name" onChange={(event)=>handleChange(event)}/>
-        <input type="submit"/>
-        </form>:
-        <p>showAddNewList = false</p>
-      }
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {store.userlist.map((list, index) => (
+            <tr>
+              <td key={list.id}>{list.name}</td>
+              <td>
+                <Link to="/listdetails">
+                  <button type="button" class="btn btn-outline-primary" onClick={() => setSelectedList(list)}>More info</button>
+                </Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <p>
+        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          Add New List
+        </button>
+      </p>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form onSubmit={submitNewList}>
+            <input type="text" name="name" placeholder="List Name" onChange={(event) => handleChange(event)} />
+            <input type="submit" />
+          </form>
+        </div>
+      </div>
     </div>
   );
 }
