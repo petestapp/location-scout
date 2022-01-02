@@ -63,11 +63,26 @@ function ListDetails(props) {
     longitude: 0,
     rating: '',
     comments: '',
-    id: 0
+    id: 0,
+    listID: list.id
   });
 
   const clickOnLocation = (place) => {
-    setSelectedLocation(place);
+    console.log(place);
+    setSelectedLocation({
+      name: place.name,
+      city: place.city,
+      state: place.state,
+      zip: place.zip,
+      latitude: place.latitude,
+      longitude: place.longitude,
+      rating: place.rating,
+      comments: place.comments,
+      inputID: place.id,
+      listID: list.id,
+      locationID: place.location_id
+    });
+
   }
 
   const handleChangeExistingLocation = (event) => {

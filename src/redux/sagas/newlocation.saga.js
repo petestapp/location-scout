@@ -31,7 +31,7 @@ function* editLocation(action) {
     try {
         console.log('action.payload:', action.payload);
         const response = yield axios.put(`/api/input/${action.payload.id}/`, action.payload);
-        yield put({ type: 'GET_LIST_DETAILS', payload: action.payload.id });
+        yield put({ type: 'GET_LIST_DETAILS', payload: action.payload.listID });
     } catch (err) {
         console.log('edit location put failed', err);
     }
