@@ -88,7 +88,10 @@ function ListDetails(props) {
     console.log('in deleteLocation:', selectedLocation);
     dispatch({
       type: "DELETE_LOCATION",
-      payload: selectedLocation.location_id
+      payload: {
+        locationID: selectedLocation.location_id,
+        listID: list.id
+      }
     });
   }
 

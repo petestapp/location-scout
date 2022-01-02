@@ -20,8 +20,8 @@ function* addNewLocation(action) {
 
 function* deleteLocation(action) {
     try {
-        const response = yield axios.delete(`/api/location/${action.payload}`);
-        yield put({ type: 'GET_LIST_DETAILS', payload: action.payload });
+        const response = yield axios.delete(`/api/location/${action.payload.locationID}`);
+        yield put({ type: 'GET_LIST_DETAILS', payload: action.payload.listID });
     } catch (err) {
         console.log('error deleting location', err);
     }
@@ -29,8 +29,8 @@ function* deleteLocation(action) {
 
 function* editLocation(action) {
     try {
-        console.log('action.payload:', action.payload.id);
-        const response = yield axios.put(`api/input/${action.payload.id}`, action.payload);
+        console.log('action.payload:', action.payload);
+        const response = yield axios.put(`/api/input/${action.payload.id}/`, action.payload);
         yield put({ type: 'GET_LIST_DETAILS', payload: action.payload.id });
     } catch (err) {
         console.log('edit location put failed', err);

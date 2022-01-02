@@ -18,12 +18,12 @@ router.post('/', (req, res) => {
 
 
 
-router.put('/', (req, res) => {
-  console.log(`put req:`, req);
+router.put('/:id', (req, res) => {
+  console.log(`put req:`, req.body);
   let query = `
-  UPDATE input SET name = $1
-  WHERE id=${req.body.id};`;
-  pool.query(query, [req.body.name])
+  UPDATE input SET rating=$1
+  WHERE id = ${req.body.id};`;
+  pool.query(query, [req.body.rating])
     .then(result => {
       res.sendStatus(201);
     }).catch(err => {
