@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     let listID = Number(req.query.id);
     console.log('listID:', listID);
     const query = `
-    SELECT location.id, location.name, location.city, location.state, input.rating, input.comments FROM list
+    SELECT location.id, location.name, location.city, location.state, location.zip, location.latitude, location.longitude, input.rating, input.comments, input.id, input.location_id FROM list
     JOIN input ON list.id = input.list_id
     JOIN location ON input.location_id = location.id
     WHERE list.id = ${listID};`;
@@ -53,5 +53,4 @@ router.post('/', (req, res) => {
             res.sendStatus(500);
         })
 });
-
 module.exports = router;

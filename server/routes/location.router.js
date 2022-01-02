@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  console.log('in POST');
   const newLocation = req.body;
 
   const locationQuery = `
@@ -57,8 +58,22 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-  const query = `DELETE FROM location where id=$1;`;
-  console.log('req.params:', req.params);
+  const inputQuery = `DELETE FROM input where location_id=$1;`;
+  console.log('req.params:', [req.params.id]);
+  pool.query(inputQuery, [req.params.id])
+    .then(result => {
+      const locationQuery = `DELETE FROM location where id=$1;`;
+      pool.query(locationQuery, [req.params.id])
+        .then(result => {
+          res.sendStatus(200);
+        }).catch(err => {
+          console.log(err);
+          res.sendStatus(500);
+        });
+    }).catch((err) => {
+      console.log('error deleting location', err);
+      res.sendStatus(500);
+    });
 })
 
 module.exports = router;
