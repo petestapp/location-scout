@@ -87,7 +87,6 @@ function ListDetails(props) {
 
   const handleChangeExistingLocation = (event) => {
     setSelectedLocation({ ...selectedLocation, [event.target.name]: event.target.value });
-    console.log('selectedLocation:', selectedLocation);
   }
 
   const submitEditedLocation = () => {
@@ -104,14 +103,26 @@ function ListDetails(props) {
     dispatch({
       type: "DELETE_LOCATION",
       payload: {
-        locationID: selectedLocation.location_id,
+        locationID: selectedLocation.locationID,
         listID: list.id
       }
     });
   }
 
+  const deleteList = () => {
+    console.log('in deleteList, list to deleted:', list.id);
+    console.log('user.id:', user.id);
+    dispatch({
+      type: "DELETE_LIST",
+      payload: {
+        listID: list.id,
+        userID: user.id
+      }
+    });
+  }
+
   return (
-    <div>
+    <div className="container">
       <h2>{list.name}</h2>
 
       <table class="table">
@@ -130,7 +141,7 @@ function ListDetails(props) {
               <td>{place.city}, {place.state}</td>
               <td>{place.rating}</td>
               <td>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#showLocationDetails" onClick={() => clickOnLocation(place)}>
+                <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#showLocationDetails" onClick={() => clickOnLocation(place)}>
                   More Info
                 </button>
               </td>
@@ -138,6 +149,15 @@ function ListDetails(props) {
           ))}
         </tbody>
       </table>
+
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewLocation">
+        Add New Location
+      </button>
+
+      <button type="button" class="btn btn-danger float-end" onClick={deleteList}>
+        Delete List
+      </button>
+
 
       <div class="modal fade" id="showLocationDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -270,9 +290,6 @@ function ListDetails(props) {
         </div>
       </div>
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewLocation">
-        Add New Location
-      </button>
       <div class="modal fade" id="addNewLocation" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">

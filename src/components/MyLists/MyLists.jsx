@@ -55,7 +55,7 @@ function MyLists() {
               <td key={list.id}>{list.name}</td>
               <td>
                 <Link to="/listdetails">
-                  <button type="button" class="btn btn-outline-primary" onClick={() => setSelectedList(list)}>More info</button>
+                  <button type="button" class="btn btn-outline-primary float-end" onClick={() => setSelectedList(list)}>More info</button>
                 </Link>
               </td>
             </tr>

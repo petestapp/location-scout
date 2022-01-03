@@ -51,6 +51,36 @@ router.post('/', (req, res) => {
         }).catch((err) => {
             console.log('error adding list', err);
             res.sendStatus(500);
-        })
+        });
 });
+
+router.delete('/:id', (req, res) => {
+    const listID = [req.params.id];
+    const inputQuery = `
+    DELETE FROM input WHERE list_id=$1;`;
+    pool.query(inputQuery, listID)
+        .then(result => {
+            const userListQuery = `
+            DELETE FROM user_list WHERE list_id=$1;`;
+            pool.query(userListQuery, listID)
+                .then(result => {
+                    const listQuery = `
+                DELETE FROM list WHERE id=$1;`;
+                    pool.query(listQuery, listID)
+                        .then(result => {
+                            res.sendStatus(200);
+                        }).catch((err) => {
+                            console.log('error deleting list at listQuery', err);
+                            res.sendStatus(500);
+                        });
+                }).catch((err) => {
+                    console.log('error deleting list at userListQuery', err);
+                    res.sendStatus(500);
+                });
+        }).catch((err) => {
+            console.log('error deleting list at inputQuery', err);
+            res.sendStatus(500);
+        });
+});
+
 module.exports = router;
