@@ -36,6 +36,11 @@ function MyLists() {
       type: 'ADD_NEW_LIST',
       payload: newList
     })
+    setNewList({
+      name: '',
+      userID: user.id
+    })
+    console.log('newList:', newList);
   }
 
   return (
@@ -52,7 +57,7 @@ function MyLists() {
         <tbody>
           {store.userlist.map((list, index) => (
             <tr>
-              <td key={list.id}>{list.name}</td>
+              <td key={index}>{list.name}</td>
               <td>
                 <Link to="/listdetails">
                   <button type="button" class="btn btn-outline-primary float-end" onClick={() => setSelectedList(list)}>More info</button>
@@ -70,9 +75,9 @@ function MyLists() {
       </p>
       <div class="collapse" id="collapseExample">
         <div class="card card-body">
-          <form onSubmit={submitNewList}>
-            <input type="text" name="name" placeholder="List Name" onChange={(event) => handleChange(event)} />
-            <input type="submit" />
+          <form class="input-group" onSubmit={submitNewList}>
+            <input type="text" class="form-control" id="listName" name="name" placeholder="New List Name" onChange={(event) => handleChange(event)} />
+            <input class="btn btn-primary" type="submit" />
           </form>
         </div>
       </div>

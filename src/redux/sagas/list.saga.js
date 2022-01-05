@@ -22,7 +22,7 @@ function* addNewList(action) {
     console.log(`in addList:`, action.payload);
     try {
         const response = yield axios.post('/api/list/', action.payload);
-        yield put({ type: 'GET_LIST', payload: action.payload });
+        yield put({ type: 'GET_USER_LIST', payload: action.payload.userID });
     } catch (err) {
         console.log('list post request failed', err);
     }

@@ -6,6 +6,7 @@ const {
 } = require('../modules/authentication-middleware');
 
 router.get('/', (req, res) => {
+    console.log('in GET LIST:', req.query)
     let listID = Number(req.query.id);
     console.log('listID:', listID);
     const query = `
