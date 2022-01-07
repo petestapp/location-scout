@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ReactDOM from 'react-dom';
+import LocationDetailsMap from '../LocationDetailsMap/LocationDetailsMap';
 
 function ListDetails(props) {
   const dispatch = useDispatch();
@@ -146,7 +146,7 @@ function ListDetails(props) {
               <td>{place.city}, {place.state}</td>
               <td>{place.rating}</td>
               <td>
-                <button type="button" class="btn btn-info float-end" data-bs-toggle="modal" data-bs-target="#showLocationDetails" onClick={() => clickOnLocation(place)}>
+                <button type="button" class="btn btn-outline-primary float-end" data-bs-toggle="modal" data-bs-target="#showLocationDetails" onClick={() => clickOnLocation(place)}>
                   More Info
                 </button>
               </td>
@@ -206,6 +206,12 @@ function ListDetails(props) {
               {selectedLocation.name}
             </div>
             <div class="modal-body">
+              <div>
+                <LocationDetailsMap
+                  lat={selectedLocation.latitude}
+                  lng={selectedLocation.longitude}
+                />
+              </div>
               {selectedLocation.city}, {selectedLocation.state}, {selectedLocation.zip}
               <br />
               {selectedLocation.latitude}, {selectedLocation.longitude}
@@ -214,7 +220,7 @@ function ListDetails(props) {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-info" data-bs-target="#editLocation" data-bs-toggle="modal">Edit</button>
+              <button type="submit" class="btn btn-primary" data-bs-target="#editLocation" data-bs-toggle="modal">Edit</button>
             </div>
           </div>
         </div>
@@ -323,7 +329,7 @@ function ListDetails(props) {
                     Delete
                   </button>
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-info" data-bs-dismiss="modal">Save changes</button>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
                 </div>
               </form>
             </div>

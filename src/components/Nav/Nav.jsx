@@ -9,7 +9,7 @@ function Nav() {
   const dispatch = useDispatch();
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary mb-4">
       <div class="container-fluid">
         <a class="navbar-brand" href="">
           Location Scout</a>

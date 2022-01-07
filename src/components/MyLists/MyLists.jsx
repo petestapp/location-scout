@@ -73,7 +73,7 @@ function MyLists() {
           Add New List
         </button>
       </p>
-      <div class="collapse" id="collapseExample">
+      <div class="collapse mr-2" id="collapseExample">
         <div class="card card-body">
           <form class="input-group" onSubmit={submitNewList}>
             <input type="text" class="form-control" id="listName" name="name" placeholder="New List Name" onChange={(event) => handleChange(event)} />
