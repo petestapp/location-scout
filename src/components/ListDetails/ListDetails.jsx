@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LocationDetailsMap from '../LocationDetailsMap/LocationDetailsMap';
 import ListDetailsMap from '../ListDetailsMap/ListDetailsMap';
+import AddNewLocationMap from '../AddNewLocationMap/AddNewLocationMap';
 
 function ListDetails(props) {
   const dispatch = useDispatch();
@@ -373,6 +374,9 @@ function ListDetails(props) {
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
+              <div>
+                <AddNewLocationMap />
+              </div>
 
               <form onSubmit={submitNewLocation}>
 
