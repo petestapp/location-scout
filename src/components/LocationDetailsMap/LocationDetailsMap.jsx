@@ -1,16 +1,30 @@
 import React, { useEffect } from 'react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
-
-const containerStyle = {
-  width: '450px',
-  height: '400px'
-};
+import { GoogleMap, LoadScript, Marker, StreetViewService } from '@react-google-maps/api';
 
 function LocationDetailsMap(props) {
 
   useEffect(() => {
     console.log(center);
   }, []);
+
+  const containerStyle = {
+    width: '450px',
+    height: '400px'
+  };
+
+  const onLoadMarker = marker => {
+    console.log('marker: ', marker)
+  }
+
+  const onLoadStreetView = (streetViewService) => {
+    streetViewService.getPanorama({
+      location: center,
+      radius: 50
+    }, (data, status) => console.log(
+      "StreetViewService results",
+      { data, status }
+    ))
+  };
 
   const latitude = Number(props.lat);
   const longitude = Number(props.lng);
@@ -19,6 +33,11 @@ function LocationDetailsMap(props) {
     lat: latitude,
     lng: longitude
   };
+
+  const position = {
+    lat: latitude,
+    lng: longitude
+  }
 
   return (
     <LoadScript
@@ -31,6 +50,13 @@ function LocationDetailsMap(props) {
       >
         { /* Child components, such as markers, info windows, etc. */}
         <></>
+        <Marker
+          onLoad={onLoadMarker}
+          position={position}
+        />
+        <StreetViewService
+          onLoad={onLoadStreetView}
+        />
       </GoogleMap>
     </LoadScript >
   )

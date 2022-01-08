@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LocationDetailsMap from '../LocationDetailsMap/LocationDetailsMap';
+import ListDetailsMap from '../ListDetailsMap/ListDetailsMap';
 
 function ListDetails(props) {
   const dispatch = useDispatch();
@@ -11,11 +12,16 @@ function ListDetails(props) {
   const user = store.user;
 
   useEffect(() => {
+    const coordinates = listDetails.map((location) => { location.latitude }
+    );
     dispatch({
       type: 'GET_LIST_DETAILS',
       payload: list.id
     });
+    console.log('ListDetails:', listDetails);
+    console.log('coordinates DETAILS:', coordinates)
   }, []);
+
 
   const [newLocation, setNewLocation] = useState({
     name: '',
@@ -129,7 +135,9 @@ function ListDetails(props) {
     <div className="container">
       {isDeleted ? <h2><del>{list.name}</del></h2> :
         <h2>{list.name}</h2>}
-
+      <div>
+        <ListDetailsMap info={listDetails} />
+      </div>
       <table class="table">
         <thead>
           <tr>
