@@ -5,7 +5,12 @@ function* AddNewLocationSaga() {
     yield takeEvery('ADD_NEW_LOCATION', addNewLocation);
     yield takeEvery('DELETE_LOCATION', deleteLocation);
     yield takeEvery('EDIT_LOCATION', editLocation);
+    // yield takeEvery('SET_CLICKED_LOCATION', setClickedLocation);
 }
+
+// function* setClickedLocation(action) {
+//     dispatch
+// }
 
 function* addNewLocation(action) {
     try {

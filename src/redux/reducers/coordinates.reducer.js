@@ -1,3 +1,5 @@
+import store from "../store";
+
 const coordinates = (state = {}, action) => {
     switch (action.type) {
         case 'SET_CLICKED_COORDINATES':

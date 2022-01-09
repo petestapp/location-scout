@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LocationDetailsMap from '../LocationDetailsMap/LocationDetailsMap';
 import ListDetailsMap from '../ListDetailsMap/ListDetailsMap';
 import AddNewLocationMap from '../AddNewLocationMap/AddNewLocationMap';
+import AddNewLocation from '../AddNewLocation/AddNewLocation';
 
 function ListDetails(props) {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function ListDetails(props) {
   const list = store.list;
   const listDetails = store.listdetails;
   const user = store.user;
+  const coordinates = store.coordinates;
 
   useEffect(() => {
     const coordinates = listDetails.map((location) => { location.latitude }
@@ -22,7 +24,6 @@ function ListDetails(props) {
     console.log('ListDetails:', listDetails);
     console.log('coordinates DETAILS:', coordinates)
   }, []);
-
 
   const [newLocation, setNewLocation] = useState({
     name: '',
@@ -91,8 +92,9 @@ function ListDetails(props) {
       listID: list.id,
       locationID: place.location_id
     });
-
   }
+
+
 
   const handleChangeExistingLocation = (event) => {
     setSelectedLocation({ ...selectedLocation, [event.target.name]: event.target.value });
@@ -373,7 +375,8 @@ function ListDetails(props) {
               <h5 class="modal-title" id="exampleModalLabel">Add New Location</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <AddNewLocation />
+            {/* <div class="modal-body">
               <div>
                 <AddNewLocationMap />
               </div>
@@ -387,11 +390,11 @@ function ListDetails(props) {
 
                 <div class="row g-2">
                   <div class="form-floating col-md-5 mb-3">
-                    <input class="form-control" type="text" name="city" id="city" placeholder="city" onChange={(event) => handleChangeNewLocation(event)} />
+                    <input class="form-control" type="text" name="city" id="city" placeholder="city" value={coordinates.city} onChange={(event) => handleChangeNewLocation(event)} />
                     <label for="city">City</label>
                   </div>
                   <div class="form-floating col-md-4 mb-3">
-                    <select class="form-select" name="state" id="state" placeholder="state" onChange={(event) => handleChangeNewLocation(event)}>
+                    <select class="form-select" name="state" id="state" placeholder="state" defaultValue={coordinates.state} onChange={(event) => handleChangeNewLocation(event)}>
                       <option selected>Select</option>
                       <option value="AL">Alabama</option>
                       <option value="AK">Alaska</option>
@@ -445,18 +448,18 @@ function ListDetails(props) {
                     <label for="state">State</label>
                   </div>
                   <div class="form-floating col-md-3 mb-3">
-                    <input class="form-control" type="text" name="zip" id="zip" placeholder="ZIP code" onChange={(event) => handleChangeNewLocation(event)} />
+                    <input class="form-control" type="text" name="zip" id="zip" placeholder="ZIP code" value={coordinates.zip} onChange={(event) => handleChangeNewLocation(event)} />
                     <label for="number">ZIP Code</label>
                   </div>
                 </div>
 
                 <div class="row g-2">
                   <div class="col-md-4 mg-3 form-floating">
-                    <input class="form-control" type="text" name="latitude" id="latitude" placeholder="latitude" onChange={(event) => handleChangeNewLocation(event)} />
+                    <input class="form-control" type="text" name="latitude" id="latitude" placeholder="latitude" value={coordinates.latitude} onChange={(event) => handleChangeNewLocation(event)} />
                     <label for="latitude">Latitude</label>
                   </div>
                   <div class="col-md-4 mb-3 form-floating">
-                    <input class="form-control" type="text" name="longitude" id="longitude" placeholder="longitude" onChange={(event) => handleChangeNewLocation(event)} />
+                    <input class="form-control" type="text" name="longitude" id="longitude" placeholder="longitude" value={coordinates.longitude} onChange={(event) => handleChangeNewLocation(event)} />
                     <label for="longitude">Longitude</label>
                   </div>
                   <div class="col-md-4 mb-3 form-floating">
@@ -475,7 +478,7 @@ function ListDetails(props) {
                 </div>
               </form>
 
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
