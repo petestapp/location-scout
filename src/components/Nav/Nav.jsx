@@ -9,14 +9,14 @@ function Nav() {
   const dispatch = useDispatch();
 
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-secondary mb-4">
+    <nav class="navbar navbar-expand-lg navbar-light bg-info mb-4">
       <div class="container-fluid">
         <a class="navbar-brand" href="">
           Location Scout</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse" id="navbarNav">
           <div class="navbar-nav">
             {/* If no user is logged in, show these links */}
             {user.id === null &&
@@ -26,7 +26,7 @@ function Nav() {
             {/* If a user is logged in, show these links */}
             {user.id && (
               <>
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                {/* <a class="nav-link active" aria-current="page" href="#">Home</a> */}
                 <a class="nav-link" href="#/mylists">My Lists</a>
                 <a class="nav-link" href="#"
                   onClick={() => dispatch({ type: 'LOGOUT' })}>Log Out</a>

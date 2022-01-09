@@ -8,7 +8,7 @@ function LocationDetailsMap(props) {
   }, []);
 
   const containerStyle = {
-    width: '450px',
+    width: '100%',
     height: '400px'
   };
 

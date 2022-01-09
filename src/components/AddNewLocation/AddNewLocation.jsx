@@ -5,19 +5,29 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import Geocode from 'react-geocode';
 
 function AddNewLocation(props) {
+  const store = useSelector((store) => store);
+  const list = store.list;
+  const listDetails = store.listdetails;
+  const user = store.user;
+  const coordinates = store.coordinates;
+
 
   Geocode.setApiKey("AIzaSyBpo6Q4DczOsVdDNje6c90zj-QmEsE-fY4");
   Geocode.setLanguage("en");
 
   const containerStyle = {
-    width: '400px',
+    width: '100%',
     height: '400px'
   };
 
-  const center = {
-    lat: 44.1,
-    lng: -93.0
-  };
+  const [center, setCenter] = useState({
+    lat:
+      44.1,
+    // Number(listDetails[listDetails.length - 1].latitude),
+    lng:
+      -93.0
+    // Number(listDetails[listDetails.length - 1].longitude)
+  })
 
   // function AddNewLocationMap() {
   const dispatch = useDispatch();
@@ -187,12 +197,6 @@ function AddNewLocation(props) {
 
 
   // const dispatch = useDispatch();
-  const store = useSelector((store) => store);
-  const list = store.list;
-  const listDetails = store.listdetails;
-  const user = store.user;
-  const coordinates = store.coordinates;
-
   const [newLocation, setNewLocation] = useState({
     name: '',
     city: '',
@@ -240,22 +244,25 @@ function AddNewLocation(props) {
     //         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     //       </div>
     <div class="modal-body">
+      {JSON.stringify(center)}
       <div>
         {/* <AddNewLocationMap /> */}
         <div>
           <LoadScript
             googleMapsApiKey="AIzaSyBpo6Q4DczOsVdDNje6c90zj-QmEsE-fY4"
           >
-            <GoogleMap
-              mapContainerStyle={containerStyle}
-              center={center}
-              zoom={10}
-              onClick={event => {
-                sendCoordinates(event)
-              }}
-            >
-              { /* Child components, such as markers, info windows, etc. */}
-            </GoogleMap>
+            <div class="container-sm pb-4">
+              <GoogleMap
+                mapContainerStyle={containerStyle}
+                center={center}
+                zoom={10}
+                onClick={event => {
+                  sendCoordinates(event)
+                }}
+              >
+                { /* Child components, such as markers, info windows, etc. */}
+              </GoogleMap>
+            </div>
           </LoadScript>
         </div>
       </div>

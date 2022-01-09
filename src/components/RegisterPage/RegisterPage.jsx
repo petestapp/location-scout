@@ -7,10 +7,12 @@ function RegisterPage() {
   const history = useHistory();
 
   return (
-    <div>
-      <RegisterForm />
+    <div class="container align-items-center">
 
       <center>
+        <div class="container align-items-center">
+          <RegisterForm />
+        </div>
         <button
           type="button"
           className="btn btn_asLink"
@@ -18,7 +20,7 @@ function RegisterPage() {
             history.push('/login');
           }}
         >
-          Login
+          Already have an account? Click here to login.
         </button>
       </center>
     </div>
