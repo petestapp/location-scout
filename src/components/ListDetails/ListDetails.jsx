@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import LocationDetailsMap from '../LocationDetailsMap/LocationDetailsMap';
 import ListDetailsMap from '../ListDetailsMap/ListDetailsMap';
-import AddNewLocationMap from '../AddNewLocationMap/AddNewLocationMap';
 import AddNewLocation from '../AddNewLocation/AddNewLocation';
 
 function ListDetails(props) {
@@ -306,6 +305,7 @@ function ListDetails(props) {
                       <option value="VT">Vermont</option>
                       <option value="VA">Virginia</option>
                       <option value="WA">Washington</option>
+                      <option value="DC">Washington DC</option>
                       <option value="WV">West Virginia</option>
                       <option value="WI">Wisconsin</option>
                       <option value="WY">Wyoming</option>

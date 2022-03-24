@@ -1,25 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-    GoogleMap, LoadScript, Marker
-    // , DrawingManager, useLoadScript
-} from '@react-google-maps/api';
-
-
-// const libraries = ['drawing'];
-// const [libraries] = { ['drawing']}
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 function ListDetailsMap(props) {
-
-    const store = useSelector((store) => store);
-    const listDetails = store.listdetails;
-
-    // const [libraries] = useState(['drawing']);
-
-    // const { isLoaded, loadError } = useLoadScript({
-    //     googleMapsApiKey: 'AIzaSyBpo6Q4DczOsVdDNje6c90zj-QmEsE-fY4',
-    //     libraries
-    // });
 
     const latitudes = props.info.map((latty, index) =>
         Number(latty.latitude)
@@ -46,8 +29,8 @@ function ListDetailsMap(props) {
     };
 
     const center = {
-        lat: 44.294833,
-        lng: -93.268343
+        lat: 44.02606410083139,
+        lng: -92.92343910969794
     };
 
     return (

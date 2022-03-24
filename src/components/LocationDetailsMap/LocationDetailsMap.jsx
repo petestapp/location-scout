@@ -48,8 +48,6 @@ function LocationDetailsMap(props) {
         center={center}
         zoom={10}
       >
-        { /* Child components, such as markers, info windows, etc. */}
-        <></>
         <Marker
           onLoad={onLoadMarker}
           position={position}

@@ -70,7 +70,7 @@ function RegisterForm() {
               required
               onChange={(event) => setUsername(event.target.value)}
             />
-            <label for="username">Username</label>
+            <label for="username">username</label>
           </div>
           <div class="form-floating">
             <input
@@ -83,7 +83,7 @@ function RegisterForm() {
               required
               onChange={(event) => setPassword(event.target.value)}
             />
-            <label for="password">Password</label>
+            <label for="password">password</label>
           </div>
           <div>
             <input className="btn btn-primary m-3" type="submit" name="submit" value="Submit" />

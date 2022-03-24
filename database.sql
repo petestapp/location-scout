@@ -40,17 +40,17 @@ CREATE TABLE "input" (
 
 -- test data
 
-INSERT INTO "user" ("first_name", "last_name", "username", "password")
-VALUES ('Pete', 'Stapp', 'petestapp', 'jfjf');
+-- INSERT INTO "user" ("first_name", "last_name", "username", "password")
+-- VALUES ('Pete', 'Stapp', 'petestapp', 'jfjf');
 
-INSERT INTO "list" ("name")
-VALUES ('Favorite Places'), ('Road Trip');
+-- INSERT INTO "list" ("name")
+-- VALUES ('Favorite Places'), ('Road Trip');
 
-INSERT INTO "user_list" ("user_id", "list_id")
-VALUES (1, 1), (1, 2);
+-- INSERT INTO "user_list" ("user_id", "list_id")
+-- VALUES (1, 1), (1, 2);
 
-INSERT INTO "location" ("name", "city", "state", "zip", "latitude", "longitude")
-VALUES ('Mattocks Park', 'St. Paul', 'MN', 55105, 44.928927, -93.171873), ('Lyndale Park Rose Garden', 'Minneapolis', 'MN', 55409, 44.927366, -93.296294), ('NCR Trail Entrance', 'Phoenix', 'MD', 21131, 39.519169, -76.619261), ('Downtown Faribault', 'Faribault', 'MN', 55021, 44.294833, -93.268343), ('National Farmer''s Bank', 'Owatonna', 'MN', 55060, 44.084817, -93.225954);
+-- INSERT INTO "location" ("name", "city", "state", "zip", "latitude", "longitude")
+-- VALUES ('Mattocks Park', 'St. Paul', 'MN', 55105, 44.928927, -93.171873), ('Lyndale Park Rose Garden', 'Minneapolis', 'MN', 55409, 44.927366, -93.296294), ('NCR Trail Entrance', 'Phoenix', 'MD', 21131, 39.519169, -76.619261), ('Downtown Faribault', 'Faribault', 'MN', 55021, 44.294833, -93.268343), ('National Farmer''s Bank', 'Owatonna', 'MN', 55060, 44.084817, -93.225954);
 
-INSERT INTO "input" ("user_id", "list_id", "location_id", "rating", "comments")
-VALUES (1, 1, 1, 'C-', 'Nice park to relax. Not great for pictures'), (1, 1, 2, 'B', 'Beautiful roses in the summer.'), (1, 1, 3, 'A+', 'One of my favorite places!'), (1, 2, 4, 'C', 'Nice but too busy and built up for pictures'), (1, 2, 5, 'B+', 'One of my favorite buildings!');
+-- INSERT INTO "input" ("user_id", "list_id", "location_id", "rating", "comments")
+-- VALUES (1, 1, 1, 'C-', 'Nice park to relax. Not great for pictures'), (1, 1, 2, 'B', 'Beautiful roses in the summer.'), (1, 1, 3, 'A+', 'One of my favorite places!'), (1, 2, 4, 'C', 'Nice but too busy and built up for pictures'), (1, 2, 5, 'B+', 'One of my favorite buildings!');

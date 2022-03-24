@@ -21,12 +21,8 @@ function AddNewLocation(props) {
   };
 
   const [center, setCenter] = useState({
-    lat:
-      44.1,
-    // Number(listDetails[listDetails.length - 1].latitude),
-    lng:
-      -93.0
-    // Number(listDetails[listDetails.length - 1].longitude)
+    lat: 44.02606410083139,
+    lng: -92.92343910969794
   })
 
   // function AddNewLocationMap() {
@@ -237,16 +233,8 @@ function AddNewLocation(props) {
   }
 
   return (
-    //   <div class="modal-dialog">
-    //     <div class="modal-content">
-    //       <div class="modal-header">
-    //         <h5 class="modal-title" id="exampleModalLabel">Add New Location</h5>
-    //         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    //       </div>
     <div class="modal-body">
-      {JSON.stringify(center)}
       <div>
-        {/* <AddNewLocationMap /> */}
         <div>
           <LoadScript
             googleMapsApiKey="AIzaSyBpo6Q4DczOsVdDNje6c90zj-QmEsE-fY4"
@@ -260,7 +248,6 @@ function AddNewLocation(props) {
                   sendCoordinates(event)
                 }}
               >
-                { /* Child components, such as markers, info windows, etc. */}
               </GoogleMap>
             </div>
           </LoadScript>
@@ -327,6 +314,7 @@ function AddNewLocation(props) {
               <option value="VT">Vermont</option>
               <option value="VA">Virginia</option>
               <option value="WA">Washington</option>
+              <option value="DC">Washington DC</option>
               <option value="WV">West Virginia</option>
               <option value="WI">Wisconsin</option>
               <option value="WY">Wyoming</option>
@@ -363,11 +351,8 @@ function AddNewLocation(props) {
           <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save changes</button>
         </div>
       </form>
-      {JSON.stringify(newLocation)};
 
     </div>
-    //   </div >
-    // </div >
   )
 }
 
